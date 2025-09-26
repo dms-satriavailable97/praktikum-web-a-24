@@ -29,16 +29,16 @@ newTestimoni.innerHTML = `
 `;
 document.querySelector(".testimoni").appendChild(newTestimoni);
 
-// === Fetch API  ===
-fetch("https://api.quotable.io/random")
+// === Fetch API (Quote Inspirasi) ===
+fetch("https://api.adviceslip.com/advice")
   .then(res => res.json())
   .then(data => {
-    console.log("Quote dari API:", data); // cek apakah data muncul
     const quoteBox = document.createElement("p");
-    quoteBox.textContent = `💡 Inspirasi hari ini: "${data.content}" — ${data.author}`;
+    quoteBox.textContent = `"${data.slip.advice}"`;
     quoteBox.style.marginTop = "20px";
     quoteBox.style.fontStyle = "italic";
     document.querySelector("footer").appendChild(quoteBox);
   })
-  .catch(err => console.log("Gagal memuat quote:", err));
+  .catch(err => console.error("Gagal memuat quote:", err));
+
 
